@@ -1,7 +1,9 @@
 ﻿CKEDITOR.editorConfig = function( config )
 {
-	config.extraPlugins = 'autogrow';
-	config.toolbar = 'ShortToolbar';
+	config.extraPlugins = 'autogrow,imagebrowser';
+	match = /.*\/(\w+)\/(\d+)\/$/.exec(location.pathname)
+	config.imageBrowser_listUrl = '/content_replacer/images/' + match[1] + '/' + match[2] + '/'
+	config.toolbar = 'FullToolbar';
 
 	config.toolbar_ShortToolbar =
 	[
@@ -17,7 +19,7 @@
         { name: 'links', items: [ 'Link', 'Unlink' ] },
         { name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar' ] },
         { name: 'tools' },
-        { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source' ] },
+        { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'CreateDiv', 'ShowBlocks', 'Source' ] },
         { name: 'others', items: [ '-' ] },
         '/',
         { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Strike', '-', 'RemoveFormat' ] },
